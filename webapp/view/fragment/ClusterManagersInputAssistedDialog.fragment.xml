@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog 
+		id="clusterManagersInputAssistedDialog"
+		title="{i18n>suppliersValueHelpDialogTitle}" 
+		class="sapUiPopupWithPadding" 
+		items="{
+		    path: 'oUserModel>/UserSet', 
+		    filters: [{
+		        path: 'Role', 
+		        operator: 'EQ',
+		        value1: 'COMMERCIAL_MANAGER'
+		    }]
+		}" 
+		multiSelect="true"
+		search="_handleClusterManagerValueHelpSearch"
+		confirm="_handleClusterManagerValueHelpClose" 
+		cancel="_handleClusterManagerValueHelpClose">
+			<StandardListItem 
+				title="{oUserModel>Address/Firstname} {oUserModel>Address/Lastname}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

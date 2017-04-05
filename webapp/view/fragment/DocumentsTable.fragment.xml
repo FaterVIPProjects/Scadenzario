@@ -1,0 +1,142 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table id="documentsTableHeader"
+		showNoData="false"
+		class="tableHeader sapUiSizeCompact">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title titleStyle="H6" 
+					text="{i18n>documentCountLabel}: {tempModel>/documentsCount}"/>	
+				<ToolbarSpacer></ToolbarSpacer>
+				<!--  Add the Personalization button -->
+				<Button icon="sap-icon://excel-attachment" press="onExcelExportButtonPressed" tooltip="{i18n>tableHeaderExportButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<Button icon="sap-icon://sort" press="onTableSortingButtonPressed" tooltip="{i18n>tableHeaderSettingsButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<Button icon="sap-icon://group-2" press="onTableGroupingButtonPressed" tooltip="{i18n>tableHeaderSettingsButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<Button icon="sap-icon://action-settings" press="onTablePersonalizationButtonPressed" tooltip="{i18n>tableHeaderSettingsButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column width="5%"	hAlign="Center"	visible="{tempModel>/tableColumns/0/selected}">
+				<Text text="{i18n>docStatusLabel}" tooltip="{i18n>docNumberColumnTTP}"/>
+			</Column>
+			<Column	width="10%"	minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/1/selected}">
+				<Text text="{i18n>docExpireLabel}" tooltip="{i18n>docDateColumnTTP}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/2/selected}">
+				<Text text="{i18n>docDescriptionLabel}" tooltip="{i18n>docAmountColumnTTP}"/>
+			</Column>
+			<Column width="8%"	minScreenWidth="Tablet"	demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/3/selected}">
+				<Text text="{i18n>docMandatoryLabel}" tooltip="{i18n>docStatusColumnTTP}"/>
+			</Column>
+			<Column	width="7%"	minScreenWidth="Tablet"	demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/4/selected}">
+				<Text text="{i18n>docSupplierStatusLabel}" tooltip="{i18n>docNumberColumnTTP}"/>
+			</Column>
+			<Column width="10%"	minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/5/selected}">
+				<Text text="{i18n>docSupplierIdLabel}" tooltip="{i18n>docDateColumnTTP}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/6/selected}">
+				<Text text="{i18n>docSupplierNameLabel}" tooltip="{i18n>docAmountColumnTTP}"/>
+			</Column>
+			<Column minScreenWidth="Tablet"	demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/7/selected}">
+				<Text text="{i18n>docClusterLable}" tooltip="{i18n>docStatusColumnTTP}"/>
+			</Column>
+		</columns>
+	</Table>
+	<Table id="documentsTable"
+		class="sapUiSizeCompact"
+		items="{/documents}">
+		<columns>
+			<Column id="docStatus"			width="5%"												hAlign="Center"	visible="{tempModel>/tableColumns/0/selected}"/>
+			<Column id="docExpire" 			width="10%"	minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/1/selected}"/>
+			<Column id="docDescription"					minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/2/selected}"/>
+			<Column id="docMandatory"		width="8%"	minScreenWidth="Tablet"	demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/3/selected}"/>
+			<Column id="docSupplierStatus"	width="7%"	minScreenWidth="Tablet"	demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/4/selected}"/>
+			<Column id="docSupplierId" 		width="10%"	minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/5/selected}"/>
+			<Column id="docSupplierName"				minScreenWidth="Tablet" demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/6/selected}"/>
+			<Column id="docCluster"						minScreenWidth="Tablet"	demandPopin="true"	hAlign="Center"	visible="{tempModel>/tableColumns/7/selected}"/>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle"
+				type="Inactive">
+				<cells>
+					
+					<core:Icon	src="sap-icon://circle-task-2"
+						color="{
+							path: 'Status',
+							formatter: 'org.fater.app.util.Formatter.documentStatus'
+						}" >
+					</core:Icon>
+					
+					<ObjectIdentifier
+						title="{
+							path:'ExpireDate',
+							type: 'sap.ui.model.type.Date',
+						    formatOptions: {
+						    	source: {
+						    		pattern: 'yyyy-MM-ddTHH:mm:ss'
+						    	}
+						    }
+						}"
+						class="sapMTableContentMargin" />
+					
+					<!--<Text text="{Description}" />-->
+					
+					<Link 
+						width="100%"
+						class="newLineTextClass"
+						text="{Value}"
+						emphasized="true"
+						press="handleDocumentPress"/>
+					
+					<CheckBox
+						selected="{
+							path: 'MandatoryDoc',
+							formatter: 'org.fater.app.util.Formatter.mandatoryDoc'
+						}"
+						enabled="false"/>
+						
+					<Text 
+						text="{
+							path: 'SupplierStatus',
+							formatter: 'org.fater.app.util.Formatter.supplierStatus'
+						}" />
+					
+					<!--<Text text="{SupplierId}" />-->
+					
+					<Link
+						width="100%"
+						class="newLineTextClass"
+						text="{SupplierId}"
+						emphasized="true"
+						press="handleSupplierIdPress"/>
+					
+					<Link
+						width="100%"
+						class="newLineTextClass"
+						text="{Name1}"
+						emphasized="true"
+						press="handleSupplierIdPress"/>
+					
+					<Text text="{ClusterId}" />
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	
+</core:FragmentDefinition>

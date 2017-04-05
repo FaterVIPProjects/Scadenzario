@@ -1,0 +1,157 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar">
+	
+	<fb:FilterBar filterContainerWidth="30%"
+		header="{i18n>appTitle}"
+		id="supplierFilterBar" 
+		filtersDialogClosed="handleFilterDialogClosed"
+		reset="onFilterBarReset" 
+		search="onFilterBarSearch" 
+		clear="onFilterBarReset" 
+		showRestoreButton="true" 
+		showClearButton="false"
+		showClearOnFB="false">
+		
+		<fb:filterItems>
+			
+			<!-- Suppliers selection -->
+			<fb:FilterItem name="A0" label="{i18n>supplierFilterLabel}" mandatory="true">
+				<fb:control>
+					<MultiInput
+						id="supplierFilterInput"
+						type="Text"
+						placeholder="{i18n>supplierFilterInputPlaceholder}"
+						showSuggestion="true"
+						showValueHelp="true"
+						valueHelpRequest="handleSupplierValueHelpPress"
+						suggest="_handleSuggest"
+						suggestionItemSelected="handleSuggestionSelected"						
+						suggestionItems="{oDataModel>/SupplierSet}"
+						enableMultiLineMode="true"
+						tokens="{/filters/suppliers}"
+						tokenChange="_handleDeleteSupplierToken"
+						tooltip="{i18n>supplierFilterInputTTP}">
+						<suggestionItems>
+							<core:Item text="{oDataModel>Name1}" key="{oDataModel>SupplierId}" />
+						</suggestionItems>
+						<tokens>
+							<Token editable="true"
+								key="{SupplierId}"
+								text="{Name1}">
+							</Token>
+						</tokens>
+					</MultiInput>
+				</fb:control>
+			</fb:FilterItem>
+			
+			<!-- Supplier status -->
+			
+			<fb:FilterItem name="E0" label="{i18n>supplierStatusFilterLabel}">
+				<fb:control>
+					<ComboBox
+						items="{/supplierStatuses}"
+						selectedKey="{/filters/supplierStatus}">
+						<core:Item key="{key}" text="{name}" />
+					</ComboBox>
+				</fb:control>
+			</fb:FilterItem>			
+			
+			<!-- Cluster managers selection -->
+			
+			<fb:FilterItem name="B0" label="{i18n>clusterManagerFilterLabel}">
+				<fb:control>
+					<MultiInput
+						id="clusterManagersFilterInput"
+						type="Text"
+						placeholder="{i18n>clusterManagersFilterInputPlaceholder}"
+						showSuggestion="true"
+						suggestionItemSelected="handleSuggestionClusterManagersSelected"
+						showValueHelp="true"
+						valueHelpRequest="handleClusterManagersValueHelpPress"
+						suggestionItems="{
+						    path: 'oUserModel>/UserSet', 
+						    filters: [{
+						        path: 'Role', 
+						        operator: 'EQ',
+						        value1: 'COMMERCIAL_MANAGER'
+						    }]
+						}"
+						enableMultiLineMode="true"
+						tokens="{/filters/clusterManagers}"
+						tooltip="{i18n>clusterManagersFilterInputTTP}">
+						<suggestionItems>
+							<core:Item text="{oUserModel>Address/Firstname} {oUserModel>Address/Lastname}" key="{oUserModel>Username}"/>
+						</suggestionItems>
+						<tokens>
+							<Token
+								editable="true"
+								key="{Username}"
+								delete="_handleDeleteClusterManagerToken"
+								text="{Name1}">
+							</Token>
+						</tokens>
+					</MultiInput>
+				</fb:control>
+			</fb:FilterItem>
+			
+			<!-- Expire date -->
+			<!--<fb:FilterItem name="C0" label="{i18n>expireDateFilterLabel}">-->
+			<!--	<fb:control>-->
+			<!--		<DatePicker-->
+			<!--			id="filterExpireDatePicker"-->
+			<!--			placeholder="{i18n>expireDateFilterPlaceholder}"-->
+			<!--			value="{/filters/expireDate}" -->
+			<!--			displayFormat="long"-->
+			<!--			change="handleDatePickerChange"-->
+			<!--			class="sapUiSmallMarginBottom"-->
+			<!--			tooltip="{i18n>filterUpperBoundDatePickerTTP}"/>-->
+			<!--	</fb:control>-->
+			<!--</fb:FilterItem>-->
+			
+							
+			<!-- Start date -->
+			<fb:FilterItem name="C0" label="{i18n>expireStartDateFilterLabel}">
+				<fb:control>
+					<DatePicker
+						id="filterLowerBoundDatePicker"
+						placeholder="{i18n>expireStartDatePlaceholder}"
+						value="{/filters/expireStart}"
+						displayFormat="short"
+						change="handleDatePickerChange"
+						class="sapUiSmallMarginBottom"
+						tooltip="{i18n>filterLowerBoundDatePickerTTP}"/>
+				</fb:control>
+			</fb:FilterItem>
+			
+			<!-- End date -->
+			<fb:FilterItem name="D0" label="{i18n>expireEndDateFilterLabel}">
+				<fb:control>
+					<DatePicker
+						id="filterUpperBoundDatePicker"
+						placeholder="{i18n>expireEndDatePlaceholder}" 
+						value="{/filters/expireEnd}" 
+						displayFormat="short"
+						change="handleDatePickerChange"
+						class="sapUiSmallMarginBottom"
+						tooltip="{i18n>filterUpperBoundDatePickerTTP}"/>
+				</fb:control>
+			</fb:FilterItem>
+			
+			<!--Expire Document Check -->
+			<fb:FilterItem name="F0" label="{i18n>checkExpireLabel}">
+				<fb:control>
+					<CheckBox
+						id="noExpireCheck"
+						selected="{/filters/expireCheck}" 
+						class="sapUiSmallMarginBottom"
+						tooltip="{i18n>allDocumentsTTP}"/>
+				</fb:control>
+			</fb:FilterItem>			
+			
+		</fb:filterItems>
+	</fb:FilterBar>
+	
+</core:FragmentDefinition>

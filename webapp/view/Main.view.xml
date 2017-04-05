@@ -1,0 +1,24 @@
+<mvc:View controllerName="org.fater.app.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					
+					<!-- Header FilterBar -->
+					<core:Fragment fragmentName="org.fater.app.view.fragment.FilterBar" type="XML" />
+					
+					<!-- Documents Table -->
+					<Panel
+						expandable="false"
+						expanded="true"
+						visible="{tempModel>/dataLoaded}">
+						
+						<core:Fragment fragmentName="org.fater.app.view.fragment.DocumentsTable" type="XML" />
+							
+					</Panel>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "fater-scadenziario",
+        "description": "Scadenziario Fater",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#faterscadenziario-Display",
+        "navigationComponentName": "org.fater.app",
+        "intentSemanticObject": "fater-scadenziario",
+        "intentAction": "Display",
+        "html5ApplicationName": "faterscadenziario",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "1559a354-aa3c-492b-a6d7-c78d00fc538f-1471967998404"
+        ],
+        "contentPackages": [
+            "0b49f7d3-bdbb-4e7f-8da8-8d6ea5eaca69-1471426089940"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Scadenziario",
+        "subtitle": "Report documenti in scadenza",
+        "searchKeywords": "Scadenziario,Report documenti in scadenza",
+        "displayIconUrl": "sap-icon://document",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

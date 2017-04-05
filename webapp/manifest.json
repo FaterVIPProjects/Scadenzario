@@ -49,10 +49,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal"
-		]
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
@@ -80,8 +77,7 @@
 				}
 			},
 			"oDataModel": {
-				"preload": true,
-				"type": "sap.ui.model.odata.ODataModel",
+				"type": "sap.ui.model.odata.v2.ODataModel",
 				"dataSource": "ZVIP_PROJECT_SRV",
 				"settings": {
 					"defaultOperationMode": "Server",
@@ -106,16 +102,13 @@
 						"sap-client": "209"
 					}
 				},
-				"dataSource": "ZVIP_USERMGMT_SRV",
-				"preload": true
+				"dataSource": "ZVIP_USERMGMT_SRV"
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		}
 	},
 	"sap.platform.hcp": {

@@ -1,3 +1,5 @@
+/* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
+
 jQuery.sap.require("org.fater.app.util.Formatter");
 
 sap.ui.define([

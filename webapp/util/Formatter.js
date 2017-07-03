@@ -1,6 +1,6 @@
-jQuery.sap.declare("org.fater.app.util.Formatter");
+jQuery.sap.declare("org.fater.scadenzario.util.Formatter");
 
-org.fater.app.util.Formatter = {
+org.fater.scadenzario.util.Formatter = {
 	
 	documentStatus: function (iStatus){
 		
@@ -24,7 +24,7 @@ org.fater.app.util.Formatter = {
 	supplierStatus: function (sSupplierStatus) {
 		
 		var sLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-		var sRootPath = jQuery.sap.getModulePath("org.fater.app");
+		var sRootPath = jQuery.sap.getModulePath("org.fater.scadenzario");
 		
 		if (!this._bundle){
 			this._bundle = jQuery.sap.resources({

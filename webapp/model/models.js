@@ -17,7 +17,7 @@ sap.ui.define([
 		
 		_getBundle:  function(){
 			var sLanguage = sap.ui.getCore().getConfiguration().getLanguage(),
-				sRootPah = jQuery.sap.getModulePath("org.fater.app");
+				sRootPah = jQuery.sap.getModulePath("org.fater.scadenzario");
 				
 			return jQuery.sap.resources({
 				url : sRootPah + "/i18n/i18n.properties", 

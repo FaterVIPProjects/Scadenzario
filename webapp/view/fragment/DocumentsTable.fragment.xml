@@ -78,7 +78,7 @@
 					<core:Icon	src="sap-icon://circle-task-2"
 						color="{
 							path: 'Status',
-							formatter: 'org.fater.app.util.Formatter.documentStatus'
+							formatter: 'org.fater.scadenzario.util.Formatter.documentStatus'
 						}" >
 					</core:Icon>
 					
@@ -106,14 +106,14 @@
 					<CheckBox
 						selected="{
 							path: 'MandatoryDoc',
-							formatter: 'org.fater.app.util.Formatter.mandatoryDoc'
+							formatter: 'org.fater.scadenzario.util.Formatter.mandatoryDoc'
 						}"
 						enabled="false"/>
 						
 					<Text 
 						text="{
 							path: 'SupplierStatus',
-							formatter: 'org.fater.app.util.Formatter.supplierStatus'
+							formatter: 'org.fater.scadenzario.util.Formatter.supplierStatus'
 						}" />
 					
 					<!--<Text text="{SupplierId}" />-->

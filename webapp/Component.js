@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"org/fater/app/model/models"
+	"org/fater/scadenzario/model/models"
 ], function(UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("org.fater.app.Component", {
+	return UIComponent.extend("org.fater.scadenzario.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -29,7 +29,7 @@ sap.ui.define([
 			// set the Temp model
 			this.setModel(models.createTempModel(), "tempModel");
 			
-			var sRootPath = jQuery.sap.getModulePath("org.fater.app");
+			var sRootPath = jQuery.sap.getModulePath("org.fater.scadenzario");
 			
 			jQuery("head").append("<script src='" + sRootPath + "/assets/js/underscore.js'/>");
 		}

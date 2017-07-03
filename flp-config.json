@@ -6,7 +6,7 @@
         "type": "SAP_UI5_Component",
         "componentUrl": "/",
         "appUrl": "#faterscadenziario-Display",
-        "navigationComponentName": "org.fater.app",
+        "navigationComponentName": "org.fater.scadenzario",
         "intentSemanticObject": "fater-scadenziario",
         "intentAction": "Display",
         "html5ApplicationName": "faterscadenziario",

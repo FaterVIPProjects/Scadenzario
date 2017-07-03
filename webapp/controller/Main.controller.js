@@ -1,4 +1,4 @@
-jQuery.sap.require("org.fater.app.util.Formatter");
+jQuery.sap.require("org.fater.scadenzario.util.Formatter");
 
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
@@ -9,7 +9,7 @@ sap.ui.define([
 ], function(Controller, MessageBox, Filter, Sorter, MessageToast) {
 	"use strict";
 
-	return Controller.extend("org.fater.app.controller.Main", {
+	return Controller.extend("org.fater.scadenzario.controller.Main", {
 
 		onInit : function(){
 			this._arrayFilterWidth = ["22%", "22%", "10%", "22%", "12%", "12%", "10%"];
@@ -187,7 +187,7 @@ sap.ui.define([
 					// create value help dialog
 					if (!this._supplierValueHelpDialog) {
 						this._supplierValueHelpDialog = sap.ui.xmlfragment(
-							"org.fater.app.view.fragment.SuppliersInputAssistedDialog",
+							"org.fater.scadenzario.view.fragment.SuppliersInputAssistedDialog",
 							this
 						);
 						
@@ -209,7 +209,7 @@ sap.ui.define([
 					// create value help dialog
 					if (!this._clusterManagersValueHelpDialog) {
 						this._clusterManagersValueHelpDialog = sap.ui.xmlfragment(
-							"org.fater.app.view.fragment.ClusterManagersInputAssistedDialog",
+							"org.fater.scadenzario.view.fragment.ClusterManagersInputAssistedDialog",
 							this
 						);
 						
@@ -708,7 +708,7 @@ sap.ui.define([
 		onTablePersonalizationButtonPressed: function(oEvent){
 			if (!this._personalizationDialog){
 				this._personalizationDialog = sap.ui.xmlfragment(
-					"org.fater.app.view.fragment.TablePersonalizationDialog",
+					"org.fater.scadenzario.view.fragment.TablePersonalizationDialog",
 					this
 				);
 				this.getView().addDependent(this._personalizationDialog);
@@ -729,7 +729,7 @@ sap.ui.define([
 		
 		_getDialog : function () {
 			if (!this._oTableVSDialog) {
-				this._oTableVSDialog = sap.ui.xmlfragment("org.fater.app.view.fragment.ViewSettingsDialog", this);
+				this._oTableVSDialog = sap.ui.xmlfragment("org.fater.scadenzario.view.fragment.ViewSettingsDialog", this);
 				this.getView().addDependent(this._oTableVSDialog);
 			}
 			return this._oTableVSDialog;
@@ -754,7 +754,7 @@ sap.ui.define([
 				var value = oContext.getProperty(oContext.sPath + "/" + groupKey);
 				var text = value;
 				var sLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-				var sRootPath = jQuery.sap.getModulePath("org.fater.app");
+				var sRootPath = jQuery.sap.getModulePath("org.fater.scadenzario");
 				
 				if (!this._bundle){
 					this._bundle = jQuery.sap.resources({
@@ -915,7 +915,7 @@ sap.ui.define([
 		
 		_getBundle: function(){
 			var sLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-			var sRootPath = jQuery.sap.getModulePath("org.fater.app");
+			var sRootPath = jQuery.sap.getModulePath("org.fater.scadenzario");
 			
 			if (!this._bundle){
 				this._bundle = jQuery.sap.resources({
